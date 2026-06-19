@@ -51,6 +51,7 @@ if player_exists() = true
 					game_set_speed(max(10,global.hitstop_speed_restore div 3),gamespeed_fps)
 				}
 				global.hitstop_frames = max(global.hitstop_frames,1)
+				scrStartScreenshake(48,0.7)
 				instance_create(x,y,item_id)
 				instance_destroy()
 			}
@@ -70,6 +71,7 @@ if player_exists() = true
 					game_set_speed(max(10,global.hitstop_speed_restore div 3),gamespeed_fps)
 				}
 				global.hitstop_frames = max(global.hitstop_frames,1)
+				scrStartScreenshake(48,0.7)
 				bitsound(sndBlockBreak)
 				instance_destroy()
 			}
@@ -89,6 +91,7 @@ if player_exists() = true
 					game_set_speed(max(10,global.hitstop_speed_restore div 3),gamespeed_fps)
 				}
 				global.hitstop_frames = max(global.hitstop_frames,1)
+				scrStartScreenshake(48,0.7)
 				bitsound(sndBlockBreak)
 				instance_destroy()
 			}
@@ -108,6 +111,7 @@ if player_exists() = true
 					game_set_speed(max(10,global.hitstop_speed_restore div 3),gamespeed_fps)
 				}
 				global.hitstop_frames = max(global.hitstop_frames,1)
+				scrStartScreenshake(48,0.7)
 				bitsound(sndBlockBreak)
 				instance_destroy()
 			}
@@ -127,6 +131,7 @@ if player_exists() = true
 					game_set_speed(max(10,global.hitstop_speed_restore div 3),gamespeed_fps)
 				}
 				global.hitstop_frames = max(global.hitstop_frames,1)
+				scrStartScreenshake(48,0.7)
 				bitsound(sndBlockBreak)
 				instance_destroy()
 			}
@@ -146,6 +151,7 @@ if player_exists() = true
 					game_set_speed(max(10,global.hitstop_speed_restore div 3),gamespeed_fps)
 				}
 				global.hitstop_frames = max(global.hitstop_frames,1)
+				scrStartScreenshake(48,0.7)
 				bitsound(sndBlockBreak)
 				instance_destroy()
 			}

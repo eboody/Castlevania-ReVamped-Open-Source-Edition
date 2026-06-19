@@ -57,6 +57,7 @@ global.gold = 0
 global.hitstop_frames = 0
 global.hitstop_speed_restore = game_get_speed(gamespeed_fps)
 global.screenshake_frames = 0
+global.screenshake_duration = 0
 global.screenshake_magnitude = 0
 
 global.save_x = 48

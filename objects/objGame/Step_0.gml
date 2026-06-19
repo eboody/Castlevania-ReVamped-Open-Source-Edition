@@ -7,7 +7,14 @@ if global.hitstop_frames > 0
 }
 
 if global.screenshake_frames > 0
+{
 	global.screenshake_frames += -1
+	if global.screenshake_frames <= 0
+	{
+		global.screenshake_duration = 0
+		global.screenshake_magnitude = 0
+	}
+}
 
 if global.heartdiscount_card = 2
 {//discounted subweapons

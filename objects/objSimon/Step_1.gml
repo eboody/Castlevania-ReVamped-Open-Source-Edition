@@ -17,7 +17,7 @@ if place_meeting(x,y,parSticky)
 //constant physics
 yspeed_accel = 0.2
 if yspeed > 0 && !pounding
-	yspeed_accel = 0.30
+	yspeed_accel = 0.35
 if pounding	
 	yspeed_accel = pound_accel
 //general movement

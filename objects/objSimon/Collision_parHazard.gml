@@ -8,6 +8,7 @@ if i_frames = 0 && !hurting && !hazard_damage
 		global.hp = 0
 	else
 		global.hp -= 1 + ds_map_find_value(global.savedata,"spiciness")
+	scrStartScreenshake(64,2.4)
 	hurting = true
 	whipping = false
 	attacking = false

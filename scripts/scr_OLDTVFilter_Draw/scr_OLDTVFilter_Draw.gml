@@ -206,13 +206,25 @@ function scr_OLDTVFilter_Draw() {
 	    //  Draw
 		var _shake_x = 0
 		var _shake_y = 0
+		var _shake_angle = 0
 		if variable_global_exists("screenshake_frames") && global.screenshake_frames > 0
 		{
-			var _shake_t = global.screenshake_frames
-			_shake_x = sin(_shake_t * 1.15) * global.screenshake_magnitude
-			_shake_y = cos(_shake_t * 0.9) * global.screenshake_magnitude * 0.45
+			var _shake_duration = max(global.screenshake_duration,1)
+			var _shake_elapsed = _shake_duration - global.screenshake_frames
+			var _shake_decay = global.screenshake_frames / _shake_duration
+			var _shake_amount = global.screenshake_magnitude * power(_shake_decay,2.4)
+			_shake_x = random_range(-1,1) * _shake_amount
+			_shake_y = random_range(-1,1) * _shake_amount * 0.65
+			_shake_angle = random_range(-1,1) * _shake_amount * 0.08
 		}
-	    draw_surface_stretched(global.bufferSurface[!surfaceFlag], _shake_x, _shake_y, surface_width, surface_height);
+		if _shake_angle != 0
+		{
+			matrix_set(matrix_world, matrix_build(surface_width/2 + _shake_x, surface_height/2 + _shake_y, 0, 0, 0, _shake_angle, 1, 1, 1))
+			draw_surface_stretched(global.bufferSurface[!surfaceFlag], -surface_width/2, -surface_height/2, surface_width, surface_height)
+			matrix_set(matrix_world, matrix_build(0, 0, 0, 0, 0, 0, 1, 1, 1))
+		}
+		else
+			draw_surface_stretched(global.bufferSurface[!surfaceFlag], _shake_x, _shake_y, surface_width, surface_height);
 	    //draw_surface_stretched(global.bufferSurface[!surfaceFlag], 0, 0, surface_get_width(global.bufferSurface[!surfaceFlag]), surface_get_height(global.bufferSurface[!surfaceFlag]));
 	    //draw_surface_stretched(global.bufferSurface[!surfaceFlag], 0, 0, surface_get_width(application_surface), surface_get_height(application_surface));
 	    //draw_surface_stretched(global.bufferSurface[!surfaceFlag], 0, 0, surface_width, surface_height);

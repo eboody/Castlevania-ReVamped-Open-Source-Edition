@@ -1,3 +1,13 @@
+function scrStartScreenshake(_frames,_magnitude)
+{
+	if global.screenshake_frames < _frames
+	{
+		global.screenshake_frames = _frames
+		global.screenshake_duration = _frames
+	}
+	global.screenshake_magnitude = max(global.screenshake_magnitude,_magnitude)
+}
+
 function scrEnemyHurt()
 {
 	if ( i_frames = 0 ) or ( i_frames <= 1 && other.object_index = objWhip )
@@ -22,8 +32,6 @@ function scrEnemyHurt()
 			game_set_speed(max(8,global.hitstop_speed_restore div 4),gamespeed_fps)
 		}
 		global.hitstop_frames = max(global.hitstop_frames,1)
-		global.screenshake_frames = max(global.screenshake_frames,8)
-		global.screenshake_magnitude = max(global.screenshake_magnitude,1.2)
 		if other.object_index = objWhip && global.current_whip = 2
 			bitsound(sndEnemyHit0)
 		else
@@ -36,9 +44,13 @@ function scrEnemyHurt()
 		}
 		if hp <= 0
 		{//kill the enemy
+			if other.object_index = objWhip
+				scrStartScreenshake(64,0.8)
 			bitsound(sndEnemyBoom0)
 			instance_destroy()
 		}
+		else if other.object_index = objWhip
+			scrStartScreenshake(56,1.8)
 		//spawn a critical hit thing if critical and also reduce the damage to normal
 		if other.critical
 		{

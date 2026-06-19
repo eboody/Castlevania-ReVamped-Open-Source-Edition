@@ -11,6 +11,8 @@ if !broken
 		game_set_speed(max(10,global.hitstop_speed_restore div 3),gamespeed_fps)
 	}
 	global.hitstop_frames = max(global.hitstop_frames,1)
+	if other.object_index = objWhip
+		scrStartScreenshake(48,0.7)
 	instance_create(x,y,item_id)
 	instance_destroy()
 }

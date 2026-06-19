@@ -11,6 +11,7 @@ if i_frames = 0 && !hurting
 	}
 	else
 		global.hp -= other.damage + ds_map_find_value(global.savedata,"spiciness")
+	scrStartScreenshake(64,2.4)
 	if global.phaseslide_card < 2
 		hurting = true
 	else
