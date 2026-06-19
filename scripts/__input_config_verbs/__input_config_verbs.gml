@@ -65,8 +65,14 @@ return {
         
         accept:  input_binding_virtual_button(),
         cancel:  input_binding_virtual_button(),
-        action:  input_binding_virtual_button(),
-        special: input_binding_virtual_button(),
+        map:     input_binding_virtual_button(),
+        
+        jump:      input_binding_virtual_button(),
+        attack:    input_binding_virtual_button(),
+        subweapon: input_binding_virtual_button(),
+        dash:      input_binding_virtual_button(),
+        swap:      input_binding_virtual_button(),
+        aimlock:   input_binding_virtual_button(),
         
         pause: input_binding_virtual_button(),
     }
