@@ -45,6 +45,7 @@ whipping = false
 sliding = false
 dashing = false
 dash_counter = 0
+slide_counter = 0
 pounding = false
 pound_counter = 0
 dubble_jumped = false

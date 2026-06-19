@@ -110,6 +110,7 @@ if can_control
 		{
 			bitsound(sndSimonWalljump)
 			sliding = true
+			slide_counter = 0
 			xspeed = slidespeed * facing
 			if global.super_slide
 			{
@@ -307,6 +308,17 @@ if whipping //handle frames when whipping
 
 if sliding //slow and return from slide
 {
+	slide_counter += 1
+	if kJump && slide_counter > 1 && on_ground() = true && !place_meeting(x,y-3,parSolid) && !in_water
+	{
+		sliding = false
+		ducking = false
+		slide_counter = 0
+		yspeed = -jumpspeed
+		xspeed *= 0.25
+		with (objPlayerTrail) instance_destroy()
+		bitsound(sndSimonJump)
+	}
 	if !place_meeting(x,y-1,parSolid) && !kDown //uncomment this line to make slide never slow down in a pipe
 		xspeed *= 0.9
 	if !place_meeting(x,y-1,parSolid) && kDown && abs(xspeed) < slidespeed //uncomment this line to make slide never slow down in a pipe
@@ -318,7 +330,10 @@ if sliding //slow and return from slide
 			{xspeed = slidespeed * facing * -1	facing *= -1}
 	}
 	if xspeed = 0 && on_ground() = true
+	{
 		sliding = false
+		slide_counter = 0
+	}
 	if global.vibration input_vibrate_constant(0.01,0,5)
 	/*if !place_meeting(x + (facing * 12),y + 14,parSolid)
 	{
