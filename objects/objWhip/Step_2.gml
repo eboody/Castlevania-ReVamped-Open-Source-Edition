@@ -35,6 +35,68 @@ if player_exists() = true
 				scrEnemyHurt()
 			}
 		}
+		
+		// Match the same point-blank behavior for breakables whose masks can sit
+		// underneath Simon while the whip mask is already out in front of him.
+		with(parCandle)
+		{
+			if place_meeting(x,y,parPlayer) && !broken
+			{
+				broken = true
+				instance_create(x,y,item_id)
+				instance_destroy()
+			}
+		}
+		
+		with(objBlockNormal)
+		{
+			if place_meeting(x,y,parPlayer) && !variable_instance_exists(id,"whip_overlap_broken")
+			{
+				whip_overlap_broken = true
+				bitsound(sndBlockBreak)
+				instance_destroy()
+			}
+		}
+		
+		with(objBlockMorningstar)
+		{
+			if place_meeting(x,y,parPlayer) && other.flavor > 0 && !variable_instance_exists(id,"whip_overlap_broken")
+			{
+				whip_overlap_broken = true
+				bitsound(sndBlockBreak)
+				instance_destroy()
+			}
+		}
+		
+		with(objBlockFlame)
+		{
+			if place_meeting(x,y,parPlayer) && other.flavor = 2 && !variable_instance_exists(id,"whip_overlap_broken")
+			{
+				whip_overlap_broken = true
+				bitsound(sndBlockBreak)
+				instance_destroy()
+			}
+		}
+		
+		with(objBlockIce)
+		{
+			if place_meeting(x,y,parPlayer) && other.flavor = 3 && !variable_instance_exists(id,"whip_overlap_broken")
+			{
+				whip_overlap_broken = true
+				bitsound(sndBlockBreak)
+				instance_destroy()
+			}
+		}
+		
+		with(objBlockThunder)
+		{
+			if place_meeting(x,y,parPlayer) && other.flavor = 4 && !variable_instance_exists(id,"whip_overlap_broken")
+			{
+				whip_overlap_broken = true
+				bitsound(sndBlockBreak)
+				instance_destroy()
+			}
+		}
 	}
 }
 else

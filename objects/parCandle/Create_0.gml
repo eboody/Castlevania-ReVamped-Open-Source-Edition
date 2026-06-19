@@ -1,6 +1,7 @@
 /// @description ID + depth
 depth = 5
 absorbed = false
+broken = false
 alarm[0] = 3
 
 basic_item = irandom(8)
