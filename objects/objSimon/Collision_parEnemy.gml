@@ -41,5 +41,4 @@ if i_frames = 0 && !hurting
 	if global.hp <= 0 && global.phaseslide_card == 2
 		instance_change(objSimonDie,true)
 	dashing = false
-	with (objPlayerTrail) if trail_source_dash instance_destroy()
 }

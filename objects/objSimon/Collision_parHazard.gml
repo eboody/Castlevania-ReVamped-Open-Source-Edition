@@ -20,5 +20,4 @@ if i_frames = 0 && !hurting && !hazard_damage
 	hurt_dir = facing
 	xspeed = 0
 	dashing = false
-	with (objPlayerTrail) if trail_source_dash instance_destroy()
 }

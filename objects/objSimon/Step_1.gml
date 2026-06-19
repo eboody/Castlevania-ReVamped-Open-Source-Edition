@@ -30,7 +30,7 @@ fallspeed = 6
 //physics for upgrades
 wallspeed = 1
 slidespeed = 2
-dashspeed = 3.25
+dashspeed = 2.5
 poundspeed = 8
 pound_accel = 1
 
