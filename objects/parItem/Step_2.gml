@@ -7,7 +7,7 @@ else
 	
 if player_exists() = true && visible
 {
-	var _magnet_distance = 72
+	var _magnet_distance = 5
 	var _distance = point_distance(x,y,parPlayer.x,parPlayer.y)
 	if _distance > 2 && _distance < _magnet_distance
 	{

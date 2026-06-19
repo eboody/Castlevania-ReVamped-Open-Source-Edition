@@ -6,6 +6,9 @@ if global.hitstop_frames > 0
 		game_set_speed(global.hitstop_speed_restore,gamespeed_fps)
 }
 
+if global.screenshake_frames > 0
+	global.screenshake_frames += -1
+
 if global.heartdiscount_card = 2
 {//discounted subweapons
 	if global.current_subweapon = 0 //no subweapon
