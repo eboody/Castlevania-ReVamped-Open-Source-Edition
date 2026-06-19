@@ -208,8 +208,9 @@ function scr_OLDTVFilter_Draw() {
 		var _shake_y = 0
 		if variable_global_exists("screenshake_frames") && global.screenshake_frames > 0
 		{
-			_shake_x = irandom_range(-global.screenshake_magnitude,global.screenshake_magnitude)
-			_shake_y = irandom_range(-global.screenshake_magnitude,global.screenshake_magnitude)
+			var _shake_t = global.screenshake_frames
+			_shake_x = sin(_shake_t * 1.15) * global.screenshake_magnitude
+			_shake_y = cos(_shake_t * 0.9) * global.screenshake_magnitude * 0.45
 		}
 	    draw_surface_stretched(global.bufferSurface[!surfaceFlag], _shake_x, _shake_y, surface_width, surface_height);
 	    //draw_surface_stretched(global.bufferSurface[!surfaceFlag], 0, 0, surface_get_width(global.bufferSurface[!surfaceFlag]), surface_get_height(global.bufferSurface[!surfaceFlag]));
@@ -222,8 +223,9 @@ function scr_OLDTVFilter_Draw() {
 			var _shake_y = 0
 			if variable_global_exists("screenshake_frames") && global.screenshake_frames > 0
 			{
-				_shake_x = irandom_range(-global.screenshake_magnitude,global.screenshake_magnitude)
-				_shake_y = irandom_range(-global.screenshake_magnitude,global.screenshake_magnitude)
+				var _shake_t = global.screenshake_frames
+				_shake_x = sin(_shake_t * 1.15) * global.screenshake_magnitude
+				_shake_y = cos(_shake_t * 0.9) * global.screenshake_magnitude * 0.45
 			}
 		    draw_surface_stretched(application_surface, _shake_x, _shake_y, surface_width, surface_height);
 	}

@@ -22,8 +22,8 @@ function scrEnemyHurt()
 			game_set_speed(max(8,global.hitstop_speed_restore div 4),gamespeed_fps)
 		}
 		global.hitstop_frames = max(global.hitstop_frames,1)
-		global.screenshake_frames = max(global.screenshake_frames,2)
-		global.screenshake_magnitude = max(global.screenshake_magnitude,1)
+		global.screenshake_frames = max(global.screenshake_frames,8)
+		global.screenshake_magnitude = max(global.screenshake_magnitude,1.2)
 		if other.object_index = objWhip && global.current_whip = 2
 			bitsound(sndEnemyHit0)
 		else
