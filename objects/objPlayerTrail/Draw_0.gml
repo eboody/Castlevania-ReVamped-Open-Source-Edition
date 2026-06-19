@@ -4,6 +4,9 @@
 //surface_set_target(surfacewithmask)
 if instance_number(objSimon) > 0
 {
+	if player_exists() = true && !(parPlayer.dashing or parPlayer.sliding or parPlayer.pounding)
+		exit
+
 	if instance_number(objGroundPound) > 0
 		draw_sprite_ext(objGroundPound.sprite_index,objGroundPound.image_index,x,y,objGroundPound.image_xscale,objGroundPound.image_yscale,objGroundPound.image_angle,objGroundPound.image_blend,objGroundPound.image_alpha)
 

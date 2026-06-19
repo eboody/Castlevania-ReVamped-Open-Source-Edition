@@ -30,7 +30,7 @@ fallspeed = 6
 //physics for upgrades
 wallspeed = 1
 slidespeed = 2
-dashspeed = 2.5
+dashspeed = 3.25
 poundspeed = 8
 pound_accel = 1
 
@@ -73,12 +73,25 @@ else
 	can_control = false
 
 //trails
-trail_counter += 1
-if trail_counter >= 2
+if !(pounding or dashing or sliding)
 {
 	trail_counter = 0
-	if pounding or dashing or sliding
-		instance_create(x,y,objPlayerTrail)
+	with (objPlayerTrail) instance_destroy()
+}
+else
+{
+	trail_counter += 1
+	if trail_counter >= 2
+	{
+		trail_counter = 0
+		var _trail = instance_create(x,y,objPlayerTrail)
+		with (_trail)
+		{
+			trail_source_dash = other.dashing
+			trail_source_slide = other.sliding
+			trail_source_pound = other.pounding
+		}
+	}
 }
 
 //pain

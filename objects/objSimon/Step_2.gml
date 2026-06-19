@@ -144,6 +144,7 @@ if can_control
 			if on_wall
 			{
 				dashing = false
+				with (objPlayerTrail) if trail_source_dash instance_destroy()
 				dubble_jumped = false
 			}
 			if !on_wall
@@ -343,19 +344,23 @@ if dashing //slow and return from slide
 	if place_meeting(x,y,parSolid)
 		y = stored_y
 	
-	if dash_counter >= 12
+	if dash_counter >= 10
 		xspeed *= 0.9
-	if abs(xspeed) < 1 && dash_counter >= 30 && !kDash
+	if abs(xspeed) < 1 && dash_counter >= 24 && !kDash
+	{
 		dashing = false
+		with (objPlayerTrail) if trail_source_dash instance_destroy()
+	}
 	if kDash && position_meeting(x + ( 6 * facing ), y, parSolid) && position_meeting(x + ( 6 * facing ), y + 9, parSolid) && position_meeting(x + ( 6 * facing ), y - 9, parSolid)
 	{
 		on_wall = true
 		clinging = true
 		cling = 20
 		dashing = false
+		with (objPlayerTrail) if trail_source_dash instance_destroy()
 		dash_counter = 0
 	}
-	if abs(xspeed) < 2 && dash_counter >= 15 && kDash // allow early repeat if holding
+	if abs(xspeed) < 2.4 && dash_counter >= 12 && kDash // allow early repeat if holding
 	{
 		if kLeft
 			facing  = -1
@@ -383,6 +388,7 @@ if dashing //slow and return from slide
 			yspeed = -jumpspeed
 			xspeed *= 0.25
 			dashing = false
+			with (objPlayerTrail) if trail_source_dash instance_destroy()
 			dash_counter = false
 			bitsound(sndSimonJump)
 		}	
@@ -434,6 +440,7 @@ if !ducking && !sliding && place_meeting(x,y-3,parSolid) && on_ground() = true
 {
 	ducking = true
 	dashing = false
+	with (objPlayerTrail) if trail_source_dash instance_destroy()
 }
 if on_ground() = false
 {
