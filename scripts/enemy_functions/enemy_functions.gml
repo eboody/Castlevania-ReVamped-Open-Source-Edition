@@ -21,7 +21,7 @@ function scrEnemyHurt()
 		}
 		//proper sfx
 		hp += -other.damage
-		i_frames = other.i_frames
+		i_frames = max(2,ceil(other.i_frames / 2))
 		instance_create(x,y,objExplosionSmall)
 		if global.vibration
 			input_vibrate_constant(0.18,0,3)
@@ -29,7 +29,7 @@ function scrEnemyHurt()
 		if global.hitstop_frames <= 0
 		{
 			global.hitstop_speed_restore = game_get_speed(gamespeed_fps)
-			game_set_speed(max(8,global.hitstop_speed_restore div 4),gamespeed_fps)
+			game_set_speed(max(8,global.hitstop_speed_restore div 2),gamespeed_fps)
 		}
 		global.hitstop_frames = max(global.hitstop_frames,1)
 		if other.object_index = objWhip && global.current_whip = 2
