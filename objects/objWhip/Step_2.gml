@@ -43,6 +43,14 @@ if player_exists() = true
 			if place_meeting(x,y,parPlayer) && !broken
 			{
 				broken = true
+				if global.vibration
+					input_vibrate_constant(0.12,0,2)
+				if global.hitstop_frames <= 0
+				{
+					global.hitstop_speed_restore = game_get_speed(gamespeed_fps)
+					game_set_speed(max(10,global.hitstop_speed_restore div 3),gamespeed_fps)
+				}
+				global.hitstop_frames = max(global.hitstop_frames,1)
 				instance_create(x,y,item_id)
 				instance_destroy()
 			}
@@ -53,6 +61,15 @@ if player_exists() = true
 			if place_meeting(x,y,parPlayer) && !variable_instance_exists(id,"whip_overlap_broken")
 			{
 				whip_overlap_broken = true
+				instance_create(x,y,objExplosionSmall)
+				if global.vibration
+					input_vibrate_constant(0.12,0,2)
+				if global.hitstop_frames <= 0
+				{
+					global.hitstop_speed_restore = game_get_speed(gamespeed_fps)
+					game_set_speed(max(10,global.hitstop_speed_restore div 3),gamespeed_fps)
+				}
+				global.hitstop_frames = max(global.hitstop_frames,1)
 				bitsound(sndBlockBreak)
 				instance_destroy()
 			}
@@ -63,6 +80,15 @@ if player_exists() = true
 			if place_meeting(x,y,parPlayer) && other.flavor > 0 && !variable_instance_exists(id,"whip_overlap_broken")
 			{
 				whip_overlap_broken = true
+				instance_create(x,y,objExplosionSmall)
+				if global.vibration
+					input_vibrate_constant(0.12,0,2)
+				if global.hitstop_frames <= 0
+				{
+					global.hitstop_speed_restore = game_get_speed(gamespeed_fps)
+					game_set_speed(max(10,global.hitstop_speed_restore div 3),gamespeed_fps)
+				}
+				global.hitstop_frames = max(global.hitstop_frames,1)
 				bitsound(sndBlockBreak)
 				instance_destroy()
 			}
@@ -73,6 +99,15 @@ if player_exists() = true
 			if place_meeting(x,y,parPlayer) && other.flavor = 2 && !variable_instance_exists(id,"whip_overlap_broken")
 			{
 				whip_overlap_broken = true
+				instance_create(x,y,objExplosionSmall)
+				if global.vibration
+					input_vibrate_constant(0.12,0,2)
+				if global.hitstop_frames <= 0
+				{
+					global.hitstop_speed_restore = game_get_speed(gamespeed_fps)
+					game_set_speed(max(10,global.hitstop_speed_restore div 3),gamespeed_fps)
+				}
+				global.hitstop_frames = max(global.hitstop_frames,1)
 				bitsound(sndBlockBreak)
 				instance_destroy()
 			}
@@ -83,6 +118,15 @@ if player_exists() = true
 			if place_meeting(x,y,parPlayer) && other.flavor = 3 && !variable_instance_exists(id,"whip_overlap_broken")
 			{
 				whip_overlap_broken = true
+				instance_create(x,y,objExplosionSmall)
+				if global.vibration
+					input_vibrate_constant(0.12,0,2)
+				if global.hitstop_frames <= 0
+				{
+					global.hitstop_speed_restore = game_get_speed(gamespeed_fps)
+					game_set_speed(max(10,global.hitstop_speed_restore div 3),gamespeed_fps)
+				}
+				global.hitstop_frames = max(global.hitstop_frames,1)
 				bitsound(sndBlockBreak)
 				instance_destroy()
 			}
@@ -93,6 +137,15 @@ if player_exists() = true
 			if place_meeting(x,y,parPlayer) && other.flavor = 4 && !variable_instance_exists(id,"whip_overlap_broken")
 			{
 				whip_overlap_broken = true
+				instance_create(x,y,objExplosionSmall)
+				if global.vibration
+					input_vibrate_constant(0.12,0,2)
+				if global.hitstop_frames <= 0
+				{
+					global.hitstop_speed_restore = game_get_speed(gamespeed_fps)
+					game_set_speed(max(10,global.hitstop_speed_restore div 3),gamespeed_fps)
+				}
+				global.hitstop_frames = max(global.hitstop_frames,1)
 				bitsound(sndBlockBreak)
 				instance_destroy()
 			}

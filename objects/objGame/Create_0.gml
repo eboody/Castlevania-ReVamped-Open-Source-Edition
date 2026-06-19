@@ -54,6 +54,8 @@ global.enemy_collection = 0
 global.boss_collection = 0
 global.timestop = 0
 global.gold = 0
+global.hitstop_frames = 0
+global.hitstop_speed_restore = game_get_speed(gamespeed_fps)
 
 global.save_x = 48
 global.save_y = 400

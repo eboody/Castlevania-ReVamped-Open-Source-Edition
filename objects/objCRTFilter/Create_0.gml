@@ -58,6 +58,6 @@ global.scanline_magnetude = 1.0            //  0.0 ~ 1.0
 //  Tube Settings
 global.tube_enabled = true;
 global.tube_mask = sprite_get_texture(sprMaskWide1,0);
-global.tube_distortion = 0.1;              // -1.0 ~ 1.0
+global.tube_distortion = 0.0;              // Keep CRT mask/scanlines without warping the screen.
 
 script_execute( scr_OLDTVFilter_Setup );
