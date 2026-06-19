@@ -8,6 +8,34 @@ if player_exists() = true
 	y = parPlayer.y
 	if parPlayer.ducking
 		y += 8
+	
+	// Standard whip collision comes from this object's sprite mask, which starts
+	// outside Simon's body. Also hurt enemies that are already overlapping Simon
+	// during the active whip window so point-blank enemies can still be struck.
+	if parPlayer.whip_out
+	{
+		with(parEnemy)
+		{
+			if place_meeting(x,y,parPlayer)
+			{
+				if !other.struck
+				{
+					if global.healingstrike_card = 2
+						global.healing_strike_count += 1
+					if global.healing_strike_count >= 6
+					{
+						global.hp += 1
+						global.healing_strike_count = 0
+						bitsound(sndPickupHealth)
+					}
+					if global.cardiacstrike_card = 2
+						instance_create(x,y,objItemHeart)
+					other.struck = true
+				}
+				scrEnemyHurt()
+			}
+		}
+	}
 }
 else
 	instance_destroy()
