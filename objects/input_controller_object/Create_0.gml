@@ -9,6 +9,10 @@ mobile_virtual_controls_enabled = (os_type == os_android);
 mobile_virtual_controls_hidden = false;
 mobile_virtual_controls = [];
 android_gamepad_enumerate_counter = 0;
+if (!variable_global_exists("debug_hitbox_overlay"))
+    global.debug_hitbox_overlay = false;
+global.debug_hitbox_toggle_suppress = 0;
+global.debug_hitbox_toggle_notice = 0;
 
 if (mobile_virtual_controls_enabled)
 {

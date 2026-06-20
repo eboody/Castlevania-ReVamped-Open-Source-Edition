@@ -14,8 +14,8 @@ if kDownTap
 {
 	bitsound(sndWeaponWhip)
 	selection += 1
-	if selection >= 10
-		selection = 10
+	if selection >= 11
+		selection = 11
 }
 
 //set options
@@ -42,18 +42,23 @@ if kRightTap
 			global.vibration = true
 			ds_map_replace(global.options,"vibration",global.vibration)
 		}
-	if selection = 7 //window scale
+	if selection = 3 //debug hitboxes
+		{
+			global.debug_hitbox_overlay = true
+			ds_map_replace(global.options,"debug_hitbox_overlay",global.debug_hitbox_overlay)
+		}
+	if selection = 8 //window scale
 		{
 			if ds_map_find_value(global.options,"windowscale") < 7
 				ds_map_replace(global.options,"windowscale",ds_map_find_value(global.options,"windowscale")+1)
 			window_set_size(400 * ds_map_find_value(global.options,"windowscale"), 224 * ds_map_find_value(global.options,"windowscale"));
 		}
-	if selection = 8 //fullscreen
+	if selection = 9 //fullscreen
 		{
 			ds_map_replace(global.options,"fullscreen",true)
 			window_set_fullscreen(ds_map_find_value(global.options,"fullscreen"))
 		}
-	if selection = 9 //crt
+	if selection = 10 //crt
 		{
 			ds_map_replace(global.options,"crt",true)
 			global.crt = true
@@ -83,18 +88,23 @@ if kLeftTap
 			global.vibration = false
 			ds_map_replace(global.options,"vibration",global.vibration)
 		}
-	if selection = 7 //window scale
+	if selection = 3 //debug hitboxes
+		{
+			global.debug_hitbox_overlay = false
+			ds_map_replace(global.options,"debug_hitbox_overlay",global.debug_hitbox_overlay)
+		}
+	if selection = 8 //window scale
 		{
 			if ds_map_find_value(global.options,"windowscale") > 1
 				ds_map_replace(global.options,"windowscale",ds_map_find_value(global.options,"windowscale")-1)
 			window_set_size(400 * ds_map_find_value(global.options,"windowscale"), 224 * ds_map_find_value(global.options,"windowscale"));
 		}
-	if selection = 8 //fullscreen
+	if selection = 9 //fullscreen
 		{
 			ds_map_replace(global.options,"fullscreen",false)
 			window_set_fullscreen(ds_map_find_value(global.options,"fullscreen"))
 		}
-	if selection = 9 //crt
+	if selection = 10 //crt
 		{
 			ds_map_replace(global.options,"crt",false)
 			global.crt = false
@@ -104,32 +114,40 @@ if kLeftTap
 if kAccept //control customizing, default values, credits, or leave
 {
 	bitsound(sndMenuSelect)
-	if selection = 3 //main controls
+	if selection = 3 //debug hitboxes
+	{
+		global.debug_hitbox_overlay = !global.debug_hitbox_overlay
+		ds_map_replace(global.options,"debug_hitbox_overlay",global.debug_hitbox_overlay)
+		ds_map_secure_save(global.options,"Castlevania_Options.sav")
+	}
+	if selection = 4 //main controls
 	{
 		room_goto(rmControlOptions)
 		ds_map_secure_save(global.options,"Castlevania_Options.sav")
 	}
-	if selection = 4 //menu controls
+	if selection = 5 //menu controls
 	{
 		room_goto(rmMenuOptions)
 		ds_map_secure_save(global.options,"Castlevania_Options.sav")
 	}
-	if selection = 5 //default values sans controls
+	if selection = 6 //default values sans controls
 	{
 		global.volumeSFX = 1
 		global.volumeBGM = 1
 		global.vibration = true	
+		global.debug_hitbox_overlay = false
 		audio_stop_all()
 		ds_map_replace(global.options,"volumeSFX",global.volumeSFX)
 		ds_map_replace(global.options,"volumeBGM",global.volumeBGM)
 		ds_map_replace(global.options,"vibration",global.vibration)
+		ds_map_replace(global.options,"debug_hitbox_overlay",global.debug_hitbox_overlay)
 	}
-	if selection = 6 //credits
+	if selection = 7 //credits
 	{
 		ds_map_secure_save(global.options,"Castlevania_Options.sav")
 		room_goto(rmCreditsOptions)
 	}
-	if selection = 10 //exit
+	if selection = 11 //exit
 	{
 		ds_map_secure_save(global.options,"Castlevania_Options.sav")
 		room_goto(rmFileSelect)

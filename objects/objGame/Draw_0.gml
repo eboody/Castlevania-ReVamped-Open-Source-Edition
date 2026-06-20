@@ -1,5 +1,6 @@
 /// @description HUD!
 scrViewData()
+scrDebugHitboxOverlayDraw()
 depth = -9999
 HUD_x = 2
 HUD_y = 2

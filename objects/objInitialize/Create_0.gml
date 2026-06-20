@@ -8,6 +8,7 @@ if (!file_exists("Castlevania_Options.sav"))
 	global.volumeBGM = 1
 	global.vibration = true
 	global.crt = false
+	global.debug_hitbox_overlay = false
 	
 	if ds_map_find_value( global.options,"icon files 0" ) = undefined
 		ds_map_replace( global.options,"icon file 0",0 )
@@ -32,6 +33,9 @@ else
 		ds_map_replace(global.options,"windowscale",1)
 	if ds_map_find_value(global.options,"fullscreen") = undefined
 		ds_map_replace(global.options,"fullscreen",false)
+	if ds_map_find_value(global.options,"debug_hitbox_overlay") = undefined
+		ds_map_replace(global.options,"debug_hitbox_overlay",false)
+	global.debug_hitbox_overlay = ds_map_find_value(global.options,"debug_hitbox_overlay")
 		
 	window_set_fullscreen(ds_map_find_value(global.options,"fullscreen"))
 	window_set_size(400 * ds_map_find_value(global.options,"windowscale"), 224 * ds_map_find_value(global.options,"windowscale"));
