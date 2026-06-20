@@ -7,7 +7,7 @@ This repo is a GameMaker project. Android APK generation must be done through Ga
 - GameMaker project: `Castlevania ReVamped Open Source Edition.yyp`
 - Project IDE metadata: `2024.6.2.162`
 - Android options file: `options/android/options_android.yy`
-- Android package id: `com.lv4games.castlevaniarevamped`
+- Android package id: `com.castlevania.revamped`
 - Display name: `Castlevania ReVamped`
 - Orientation: landscape + reverse landscape
 - ABI: arm64 only
@@ -81,9 +81,9 @@ unzip -l build/android/CastlevaniaReVamped-debug.apk | grep -E 'libyoyo.so|asset
 
 Observed verification:
 
-- package: `com.lv4games.castlevaniarevamped`
+- package: `com.castlevania.revamped`
 - app label: `Castlevania ReVamped`
-- launchable activity: `com.lv4games.castlevaniarevamped.RunnerActivity`
+- launchable activity: `com.castlevania.revamped.RunnerActivity`
 - Leanback launchable activity present
 - `minSdkVersion=23`, `targetSdkVersion=35`, `compileSdkVersion=35`
 - native code: `arm64-v8a`
@@ -96,7 +96,7 @@ Note: GameMaker's Android gamepad support injects Bluetooth permissions/features
 On-device smoke on ASUS `ASUS_AI2302` (`RCAIB70040468JB`) passed:
 
 - `adb install -r build/android/CastlevaniaReVamped-debug.apk` returned `Success`.
-- `adb shell monkey -p com.lv4games.castlevaniarevamped 1` launched `RunnerActivity` and kept it foregrounded.
+- `adb shell monkey -p com.castlevania.revamped 1` launched `RunnerActivity` and kept it foregrounded.
 - Logcat showed no fatal exception/ANR for the package.
 - `libyoyo.so` loaded successfully and the GameMaker main loop started.
 - GameSir controller devices were detected; logcat reported `Input: Gamepad 0 connected`, `Input: Gamepad 1 connected`, and `Input: Setting player 0 profile to "gamepad"`.
@@ -112,8 +112,8 @@ With a real APK path and connected device:
 ```bash
 adb devices -l
 adb install -r build/android/CastlevaniaReVamped-debug.apk
-adb shell monkey -p com.lv4games.castlevaniarevamped 1
-adb logcat -d | grep -E 'yoyo|GameMaker|AndroidRuntime|com.lv4games.castlevaniarevamped'
+adb shell monkey -p com.castlevania.revamped 1
+adb logcat -d | grep -E 'yoyo|GameMaker|AndroidRuntime|com.castlevania.revamped'
 ```
 
 Acceptance criteria:

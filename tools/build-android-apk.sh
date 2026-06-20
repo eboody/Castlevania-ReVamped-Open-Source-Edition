@@ -7,7 +7,7 @@ BUILD_DIR="$PROJECT_ROOT/build/android"
 GMBUILD_DIR="$PROJECT_ROOT/.gmbuild"
 CACHE_DIR="$GMBUILD_DIR/cache"
 TEMP_DIR="$GMBUILD_DIR/temp"
-PACKAGE="com.lv4games.castlevaniarevamped"
+PACKAGE="com.castlevania.revamped"
 CHECK_ONLY=0
 
 if [[ "${1:-}" == "--check-only" ]]; then

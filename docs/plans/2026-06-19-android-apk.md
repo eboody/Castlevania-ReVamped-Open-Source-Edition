@@ -23,7 +23,7 @@
 - Verified build artifacts produced on 2026-06-19 after fixing startup to skip the open-source README room:
   - `build/android/CastlevaniaReVamped-debug.apk` (`1.1G`, SHA-256 `95b0a09bac4b3c6ffc1119dc98e807eb473c5debb33245862cf9023680ab0896`)
   - `build/android/CastlevaniaReVamped-release.apk` (`532M`, SHA-256 `6bbb1d9607919cedc713e1c1cdcce9f3833eb871c624161f6f400bf48447b254`)
-- Static APK verification: package `com.lv4games.castlevaniarevamped`, app label `Castlevania ReVamped`, launchable activity `com.lv4games.castlevaniarevamped.RunnerActivity`, `minSdk=23`, `targetSdk=35`, native code `arm64-v8a`, optional touchscreen, Leanback launchable activity, `assets/game.droid`, `assets/options.ini`, and `lib/arm64-v8a/libyoyo.so` are present. `apksigner verify --verbose` reports v1/v2 signature verification true for the debug APK.
+- Static APK verification: package `com.castlevania.revamped`, app label `Castlevania ReVamped`, launchable activity `com.castlevania.revamped.RunnerActivity`, `minSdk=23`, `targetSdk=35`, native code `arm64-v8a`, optional touchscreen, Leanback launchable activity, `assets/game.droid`, `assets/options.ini`, and `lib/arm64-v8a/libyoyo.so` are present. `apksigner verify --verbose` reports v1/v2 signature verification true for the debug APK.
 - Phone smoke on ASUS `ASUS_AI2302` passed: `adb install -r` returned `Success`, launch foregrounded `RunnerActivity`, logcat had no fatal exception/ANR, GameSir controller devices were detected, the player profile switched to `gamepad`, and screenshots show file select plus in-game play with no visible touch overlay while the controller is connected.
 
 ## Definition of Done
@@ -48,7 +48,7 @@
 
 **Steps:**
 1. Set display name to `Castlevania ReVamped`.
-2. Set package identity to `com.lv4games.castlevaniarevamped` using GameMaker's split fields.
+2. Set package identity to `com.castlevania.revamped` using GameMaker's split fields.
 3. Use landscape-only orientation for a Castlevania-style platformer (`landscape=true`, `landscape_flipped=true`, portrait flags `false`).
 4. Set explicit SDK values that match modern Android tooling (`minimum_sdk=23`, `compile_sdk=35`, `target_sdk=35`, build tools `35.0.0`) unless the installed GameMaker runtime rejects them.
 5. Disable unused permissions (`internet`, `bluetooth`) unless testing proves an extension needs them.
