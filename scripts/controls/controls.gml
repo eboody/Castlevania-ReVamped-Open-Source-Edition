@@ -42,17 +42,17 @@ function scrDebugHitboxOverlayDraw()
 	
 	if _enabled
 	{
-		scrDebugHitboxOverlayDrawGroup(parPlayer,c_lime,"SIMON");
-		scrDebugHitboxOverlayDrawPreciseMaskGroup(objWhip,c_aqua,"WHIP");
-		scrDebugHitboxOverlayDrawGroup(parEnemy,c_red,"ENEMY");
-		scrDebugHitboxOverlayDrawGroup(parCandle,c_yellow,"BREAKABLE");
-		scrDebugHitboxOverlayDrawGroup(objBlockNormal,c_orange,"BREAKABLE");
-		scrDebugHitboxOverlayDrawGroup(objBlockMorningstar,c_orange,"BREAKABLE");
-		scrDebugHitboxOverlayDrawGroup(objBlockFlame,c_orange,"BREAKABLE");
-		scrDebugHitboxOverlayDrawGroup(objBlockIce,c_orange,"BREAKABLE");
-		scrDebugHitboxOverlayDrawGroup(objBlockThunder,c_orange,"BREAKABLE");
-		scrDebugHitboxOverlayDrawGroup(objBlockPound,c_orange,"BREAKABLE");
-		scrDebugHitboxOverlayDrawGroup(objBlockSlide,c_orange,"BREAKABLE");
+		scrDebugHitboxOverlayDrawGroup(parPlayer,c_lime);
+		scrDebugHitboxOverlayDrawGroup(objWhip,c_aqua);
+		scrDebugHitboxOverlayDrawGroup(parEnemy,c_red);
+		scrDebugHitboxOverlayDrawGroup(parCandle,c_yellow);
+		scrDebugHitboxOverlayDrawGroup(objBlockNormal,c_orange);
+		scrDebugHitboxOverlayDrawGroup(objBlockMorningstar,c_orange);
+		scrDebugHitboxOverlayDrawGroup(objBlockFlame,c_orange);
+		scrDebugHitboxOverlayDrawGroup(objBlockIce,c_orange);
+		scrDebugHitboxOverlayDrawGroup(objBlockThunder,c_orange);
+		scrDebugHitboxOverlayDrawGroup(objBlockPound,c_orange);
+		scrDebugHitboxOverlayDrawGroup(objBlockSlide,c_orange);
 		
 		draw_set_alpha(1);
 		draw_set_colour(c_white);
@@ -72,7 +72,7 @@ function scrDebugHitboxOverlayDraw()
 	draw_set_colour(_old_colour);
 }
 
-function scrDebugHitboxOverlayDrawGroup(_object,_colour,_label)
+function scrDebugHitboxOverlayDrawGroup(_object,_colour)
 {
 	if !object_exists(_object)
 		return;
@@ -92,43 +92,6 @@ function scrDebugHitboxOverlayDrawGroup(_object,_colour,_label)
 			
 			draw_set_alpha(0.85);
 			draw_rectangle(_left,_top,_right,_bottom,true);
-			draw_line(_left,_top,_right,_bottom);
-			draw_line(_right,_top,_left,_bottom);
-			
-			draw_set_alpha(1);
-			draw_text_outline(_left,_top - 8,c_black,_colour,_label);
-		}
-	}
-}
-
-function scrDebugHitboxOverlayDrawPreciseMaskGroup(_object,_colour,_label)
-{
-	if !object_exists(_object)
-		return;
-	
-	with(_object)
-	{
-		if visible
-		{
-			var _left = bbox_left;
-			var _top = bbox_top;
-			var _right = bbox_right;
-			var _bottom = bbox_bottom;
-			var _mask = sprite_index;
-			if mask_index != -1
-				_mask = mask_index;
-			
-			// Precise masks collide by non-transparent sprite pixels, not by the bbox
-			// envelope. Draw the actual mask silhouette as the real hit area, then keep
-			// the bbox as a faint outline so edge false-positives are obvious.
-			draw_sprite_ext(_mask,floor(image_index),x,y,image_xscale,image_yscale,image_angle,_colour,0.45);
-			
-			draw_set_alpha(0.25);
-			draw_set_colour(_colour);
-			draw_rectangle(_left,_top,_right,_bottom,true);
-			
-			draw_set_alpha(1);
-			draw_text_outline(_left,_top - 8,c_black,_colour,_label + " PRECISE");
 		}
 	}
 }
