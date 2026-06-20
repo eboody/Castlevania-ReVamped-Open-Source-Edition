@@ -34,7 +34,7 @@ else
 		ds_map_replace(global.options,"fullscreen",false)
 		
 	window_set_fullscreen(ds_map_find_value(global.options,"fullscreen"))
-	window_set_size(400 * ds_map_find_value(global.options,"windowscale"), 224 * ds_map_find_value(global.options,"windowscale"));
+	window_set_size(498 * ds_map_find_value(global.options,"windowscale"), 224 * ds_map_find_value(global.options,"windowscale"));
 }
 
 //load controls if they exist
