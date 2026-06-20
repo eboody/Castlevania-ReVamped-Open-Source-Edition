@@ -25,7 +25,7 @@ if (global.debug_hitbox_toggle_suppress > 0)
 if (global.debug_hitbox_toggle_notice > 0)
     global.debug_hitbox_toggle_notice -= 1;
 
-var _debug_hitbox_toggle = (input_check("aimlock") && input_check_pressed("map")) || keyboard_check_pressed(ord("H"));
+var _debug_hitbox_toggle = (input_check("aimlock") && input_check_pressed("pause")) || keyboard_check_pressed(ord("H"));
 if (_debug_hitbox_toggle)
 {
     global.debug_hitbox_overlay = !global.debug_hitbox_overlay;
@@ -33,7 +33,7 @@ if (_debug_hitbox_toggle)
         ds_map_replace(global.options,"debug_hitbox_overlay",global.debug_hitbox_overlay);
     global.debug_hitbox_toggle_suppress = 3;
     global.debug_hitbox_toggle_notice = 90;
-    input_verb_consume(["map", "aimlock"]);
+    input_verb_consume(["pause", "aimlock"]);
 }
 
 if (mobile_virtual_controls_enabled)
