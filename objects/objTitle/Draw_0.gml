@@ -18,7 +18,7 @@ draw_set_halign(fa_center)
 draw_set_font(fntHUD)
 
 if image_index >= 3
-	draw_text_outline(200,160,c_black,nes_red,title_text)
+	draw_text_outline(xview + (wview/2),160,c_black,nes_red,title_text)
 	
 draw_set_halign(fa_left)
 draw_text(8,224-12,"Open-Source Edition")
