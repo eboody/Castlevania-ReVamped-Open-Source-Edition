@@ -1,11 +1,9 @@
 function scrStartScreenshake(_frames,_magnitude)
 {
-	if global.screenshake_frames < _frames
-	{
-		global.screenshake_frames = _frames
-		global.screenshake_duration = _frames
-	}
-	global.screenshake_magnitude = max(global.screenshake_magnitude,_magnitude)
+	// Screen shake intentionally disabled globally.
+	global.screenshake_frames = 0
+	global.screenshake_duration = 0
+	global.screenshake_magnitude = 0
 }
 
 function scrEnemyHurt()
