@@ -51,7 +51,7 @@ if kRightTap
 		{
 			if ds_map_find_value(global.options,"windowscale") < 7
 				ds_map_replace(global.options,"windowscale",ds_map_find_value(global.options,"windowscale")+1)
-			window_set_size(400 * ds_map_find_value(global.options,"windowscale"), 224 * ds_map_find_value(global.options,"windowscale"));
+			window_set_size(498 * ds_map_find_value(global.options,"windowscale"), 224 * ds_map_find_value(global.options,"windowscale"));
 		}
 	if selection = 9 //fullscreen
 		{
@@ -97,7 +97,7 @@ if kLeftTap
 		{
 			if ds_map_find_value(global.options,"windowscale") > 1
 				ds_map_replace(global.options,"windowscale",ds_map_find_value(global.options,"windowscale")-1)
-			window_set_size(400 * ds_map_find_value(global.options,"windowscale"), 224 * ds_map_find_value(global.options,"windowscale"));
+			window_set_size(498 * ds_map_find_value(global.options,"windowscale"), 224 * ds_map_find_value(global.options,"windowscale"));
 		}
 	if selection = 9 //fullscreen
 		{
