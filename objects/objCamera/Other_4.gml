@@ -1,15 +1,6 @@
 /// @description set view, snap to player
-camera_set_view_size(view_camera,498,224)
-if room_width <= 400 || instance_exists(objIntroSimon)
-{
-	camera_set_view_target(view_camera,noone)
-	camera_set_view_pos(view_camera,-49,0)
-}
-else
-	camera_set_view_target(view_camera,parPlayer)
-camera_set_view_border(view_camera,249,112)
-view_set_wport(view_camera,498)
-view_set_hport(view_camera,224)
+aspect_apply_surface();
+aspect_apply_camera();
 
 camera_set_view_speed(view_camera,6669,6669)
 

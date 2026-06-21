@@ -897,7 +897,9 @@
     {"id":{"name":"dsmap_scripts","path":"scripts/dsmap_scripts/dsmap_scripts.yy",},},
     {"id":{"name":"enemy_functions","path":"scripts/enemy_functions/enemy_functions.yy",},},
     {"id":{"name":"fakeGML","path":"scripts/fakeGML/fakeGML.yy",},},
+    {"id":{"name":"scrAspect","path":"scripts/scrAspect/scrAspect.yy",},},
     {"id":{"name":"gameplay_functions","path":"scripts/gameplay_functions/gameplay_functions.yy",},},
+
     {"id":{"name":"input_accessibility_global_cooldown_get","path":"scripts/input_accessibility_global_cooldown_get/input_accessibility_global_cooldown_get.yy",},},
     {"id":{"name":"input_accessibility_global_cooldown_set","path":"scripts/input_accessibility_global_cooldown_set/input_accessibility_global_cooldown_set.yy",},},
     {"id":{"name":"input_accessibility_global_toggle_get","path":"scripts/input_accessibility_global_toggle_get/input_accessibility_global_toggle_get.yy",},},

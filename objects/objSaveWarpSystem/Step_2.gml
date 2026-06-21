@@ -4,7 +4,7 @@ scrControls()
 if global.warptime = true
 {
 	application_surface_enable(true);
-	screen_sprite = sprite_create_from_surface(application_surface, 0, 0, 498, 224, false, false, 0, 0);
+	screen_sprite = aspect_screen_sprite_from_surface();
 	deactivate()
 	instance_activate_object(parMap)
 	visible = true
