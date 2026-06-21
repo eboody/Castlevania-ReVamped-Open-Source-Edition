@@ -10,6 +10,13 @@ function scrEnemyHurt()
 {
 	if ( i_frames = 0 ) or ( i_frames <= 1 && other.object_index = objWhip )
 	{
+		if other.object_index = objWhip
+		{
+			if variable_instance_exists(id,"last_whip_hit_id") && last_whip_hit_id = other.id
+				return;
+			last_whip_hit_id = other.id;
+		}
+		
 		//damage numbers with critical card
 		if global.critical_card = 2
 		{
