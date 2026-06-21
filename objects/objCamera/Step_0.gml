@@ -1,5 +1,5 @@
 /// @description follow the player
-if room_width <= 400
+if room_width <= 400 || instance_exists(objIntroSimon)
 {
 	camera_set_view_target(view_camera,noone)
 	var _camera_y = 0
