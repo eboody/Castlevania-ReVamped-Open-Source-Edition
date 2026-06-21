@@ -166,9 +166,9 @@ function scrWhipBackswingHitboxRects()
 			var _player_width = parPlayer.bbox_right - parPlayer.bbox_left + 1;
 			var _back_width = max(16,_player_width);
 			var _top = parPlayer.bbox_top;
-			var _bottom = floor((parPlayer.bbox_top + parPlayer.bbox_bottom) * 0.5);
+			var _bottom = parPlayer.bbox_bottom;
 			
-			// Top half of Simon's own player mask during the backswing/startup.
+			// Simon's own attack space during the backswing/startup.
 			array_push(_rects,{ left: parPlayer.bbox_left, top: _top, right: parPlayer.bbox_right, bottom: _bottom });
 			
 			if parPlayer.facing >= 0
