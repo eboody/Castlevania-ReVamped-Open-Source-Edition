@@ -116,7 +116,7 @@ function aspect_is_safe_area_scene()
 
 function aspect_apply_camera()
 {
-	if !camera_exists(view_camera)
+	if view_camera == noone
 		return;
 	var _target_w = aspect_get_width();
 	var _target_h = aspect_get_height();
@@ -193,7 +193,7 @@ function aspect_screen_sprite_from_surface()
 
 function aspect_draw_black_bars()
 {
-	if !camera_exists(view_camera)
+	if view_camera == noone
 		return;
 	if !aspect_is_safe_area_scene()
 		return;
