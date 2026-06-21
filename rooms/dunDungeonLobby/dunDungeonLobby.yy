@@ -36,6 +36,7 @@
   ],
   "isDnd":false,
   "layers":[
+    {"$GMRBackgroundLayer":"","%Name":"AspectSafeAreaBlack","animationFPS":15.0,"animationSpeedType":0,"colour":4278190080,"depth":1000000,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"hspeed":0.0,"htiled":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"name":"AspectSafeAreaBlack","properties":[],"resourceType":"GMRBackgroundLayer","resourceVersion":"2.0","spriteId":null,"stretch":false,"userdefinedAnimFPS":false,"userdefinedDepth":true,"visible":true,"vspeed":0.0,"vtiled":false,"x":0,"y":0,},
     {"$GMRTileLayer":"","%Name":"Tiles","depth":0,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"name":"Tiles","properties":[],"resourceType":"GMRTileLayer","resourceVersion":"2.0","tiles":{"SerialiseHeight":14,"SerialiseWidth":25,"TileCompressedData":[
           3,33,41,41,-7,33,-3,41,-8,33,-4,41,-27,33,-3,41,-13,33,2,41,33,-3,41,-11,33,1,41,-8,33,-4,41,-3,33,1,
           41,-12,33,3,41,33,33,-6,41,4,33,41,33,41,-3,33,1,41,-8,33,1,41,-39,33,-2,-2147483648,-2,33,4,41,33,-2147483648,
