@@ -159,22 +159,65 @@ function scrWhipBackswingHitboxRects()
 	
 	with(objWhip)
 	{
-		// Only cover the close/startup areas before the forward whip hitbox extends
-		// in front of Simon. Other attack directions keep their sprite masks only.
-		if parPlayer.whip_out && aim_dir = FORWARD && floor(image_index) <= 0
+		if parPlayer.whip_out
 		{
-			var _player_width = parPlayer.bbox_right - parPlayer.bbox_left + 1;
-			var _back_width = max(16,_player_width);
-			var _top = parPlayer.bbox_top;
-			var _bottom = floor((parPlayer.bbox_top + parPlayer.bbox_bottom) * 0.5);
+			var _frame = floor(image_index);
+			var _bounds = scrWhipSpriteMaskFrameBounds(sprite_index,_frame);
+			var _xoff = sprite_get_xoffset(sprite_index);
+			var _yoff = sprite_get_yoffset(sprite_index);
+			var _mask_left = x + _bounds.left - _xoff;
+			var _mask_right = x + _bounds.right - _xoff;
+			if image_xscale < 0
+			{
+				_mask_left = x - (_bounds.right - _xoff);
+				_mask_right = x - (_bounds.left - _xoff);
+			}
+			var _mask_top = y + _bounds.top - _yoff;
+			var _mask_bottom = y + _bounds.bottom - _yoff;
 			
-			// Top half of Simon's own player mask during the backswing/startup.
-			array_push(_rects,{ left: parPlayer.bbox_left, top: _top, right: parPlayer.bbox_right, bottom: _bottom });
+			// Point-blank assist: the visual whip animation starts at/near Simon,
+			// but several sprite masks begin away from his body. Cover Simon's
+			// active attack space so enemies that are too close still get hit.
+			array_push(_rects,{ left: parPlayer.bbox_left, top: parPlayer.bbox_top, right: parPlayer.bbox_right, bottom: parPlayer.bbox_bottom });
 			
-			if parPlayer.facing >= 0
-				array_push(_rects,{ left: parPlayer.bbox_left - _back_width, top: _top, right: parPlayer.bbox_left - 1, bottom: _bottom });
+			// Fill the gap between Simon and the active frame's alpha mask. This
+			// keeps the supplemental area directional instead of blindly expanding
+			// every sprite mask outward.
+			if aim_dir = FORWARD
+			{
+				var _top = min(parPlayer.bbox_top,_mask_top);
+				var _bottom = max(parPlayer.bbox_bottom,_mask_bottom);
+				if image_xscale >= 0
+					array_push(_rects,{ left: parPlayer.bbox_right, top: _top, right: max(parPlayer.bbox_right,_mask_left), bottom: _bottom });
+				else
+					array_push(_rects,{ left: min(parPlayer.bbox_left,_mask_right), top: _top, right: parPlayer.bbox_left, bottom: _bottom });
+			}
+			else if aim_dir = UP
+			{
+				array_push(_rects,{ left: min(parPlayer.bbox_left,_mask_left), top: min(_mask_bottom,parPlayer.bbox_top), right: max(parPlayer.bbox_right,_mask_right), bottom: parPlayer.bbox_top });
+			}
+			else if aim_dir = DOWN
+			{
+				array_push(_rects,{ left: min(parPlayer.bbox_left,_mask_left), top: parPlayer.bbox_bottom, right: max(parPlayer.bbox_right,_mask_right), bottom: max(_mask_top,parPlayer.bbox_bottom) });
+			}
 			else
-				array_push(_rects,{ left: parPlayer.bbox_right + 1, top: _top, right: parPlayer.bbox_right + _back_width, bottom: _bottom });
+			{
+				array_push(_rects,{ left: min(parPlayer.bbox_left,_mask_left), top: min(parPlayer.bbox_top,_mask_top), right: max(parPlayer.bbox_right,_mask_right), bottom: max(parPlayer.bbox_bottom,_mask_bottom) });
+			}
+			
+			// Visible forward backswing/startup behind Simon should also count.
+			if aim_dir = FORWARD && _frame <= 1
+			{
+				var _player_width = parPlayer.bbox_right - parPlayer.bbox_left + 1;
+				var _back_width = max(16,_player_width);
+				var _top_back = parPlayer.bbox_top;
+				var _bottom_back = parPlayer.bbox_bottom;
+				
+				if parPlayer.facing >= 0
+					array_push(_rects,{ left: parPlayer.bbox_left - _back_width, top: _top_back, right: parPlayer.bbox_left - 1, bottom: _bottom_back });
+				else
+					array_push(_rects,{ left: parPlayer.bbox_right + 1, top: _top_back, right: parPlayer.bbox_right + _back_width, bottom: _bottom_back });
+			}
 		}
 	}
 	
