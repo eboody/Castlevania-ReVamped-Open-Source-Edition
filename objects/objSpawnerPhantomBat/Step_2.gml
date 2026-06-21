@@ -1,5 +1,5 @@
 /// @description sense player and start fight
-if !active && abs(parPlayer.x - x) < eyesight
+if !active && abs(parPlayer.x - x) < eyesight && boss_entry_gate_passed(x)
 {
 	active = true
 	image_index = 1
