@@ -230,14 +230,35 @@ function scrWhipBackswingHitboxApply()
 	}
 	ds_list_destroy(_enemies);
 	
-	with(parCandle)
+	var _candles = ds_list_create();
+	var _candle_hits = ds_list_create();
+	for (var c = 0; c < array_length(_rects); c++)
 	{
-		if scrWhipHitboxOverlapSelf(_rects)
+		var _candle_rect = _rects[c];
+		ds_list_clear(_candle_hits);
+		collision_rectangle_list(_candle_rect.left,_candle_rect.top,_candle_rect.right,_candle_rect.bottom,parCandle,false,true,_candle_hits,false);
+		for (var ch = 0; ch < ds_list_size(_candle_hits); ch++)
 		{
-			instance_create(x,y,item_id)
-			instance_destroy()
+			var _candle = _candle_hits[| ch];
+			if ds_list_find_index(_candles,_candle) < 0
+				ds_list_add(_candles,_candle);
 		}
 	}
+	ds_list_destroy(_candle_hits);
+	
+	for (var ci = 0; ci < ds_list_size(_candles); ci++)
+	{
+		var _candle = _candles[| ci];
+		if instance_exists(_candle)
+		{
+			with(_candle)
+			{
+				instance_create(x,y,item_id)
+				instance_destroy()
+			}
+		}
+	}
+	ds_list_destroy(_candles);
 	
 	scrWhipBackswingHitboxApplyBlock(objBlockNormal,-1,_rects);
 	scrWhipBackswingHitboxApplyBlock(objBlockMorningstar,1,_rects);
