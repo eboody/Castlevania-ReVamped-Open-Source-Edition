@@ -187,27 +187,48 @@ function scrWhipBackswingHitboxApply()
 	if array_length(_rects) <= 0
 		return;
 	
-	with(parEnemy)
+	var _enemies = ds_list_create();
+	var _hits = ds_list_create();
+	for (var i = 0; i < array_length(_rects); i++)
 	{
-		if scrWhipHitboxOverlapSelf(_rects)
+		var _rect = _rects[i];
+		ds_list_clear(_hits);
+		collision_rectangle_list(_rect.left,_rect.top,_rect.right,_rect.bottom,parEnemy,false,true,_hits,false);
+		for (var h = 0; h < ds_list_size(_hits); h++)
 		{
-			if !other.struck
-			{
-				if global.healingstrike_card = 2
-					global.healing_strike_count += 1
-				if global.healing_strike_count >= 6
-				{
-					global.hp += 1
-					global.healing_strike_count = 0
-					bitsound(sndPickupHealth)
-				}
-				if global.cardiacstrike_card = 2
-					instance_create(other.x,other.y,objItemHeart)
-				other.struck = true
-			}
-			scrEnemyHurt()
+			var _enemy = _hits[| h];
+			if ds_list_find_index(_enemies,_enemy) < 0
+				ds_list_add(_enemies,_enemy);
 		}
 	}
+	ds_list_destroy(_hits);
+	
+	for (var e = 0; e < ds_list_size(_enemies); e++)
+	{
+		var _enemy = _enemies[| e];
+		if instance_exists(_enemy)
+		{
+			with(_enemy)
+			{
+				if !other.struck
+				{
+					if global.healingstrike_card = 2
+						global.healing_strike_count += 1
+					if global.healing_strike_count >= 6
+					{
+						global.hp += 1
+						global.healing_strike_count = 0
+						bitsound(sndPickupHealth)
+					}
+					if global.cardiacstrike_card = 2
+						instance_create(other.x,other.y,objItemHeart)
+					other.struck = true
+				}
+				scrEnemyHurt()
+			}
+		}
+	}
+	ds_list_destroy(_enemies);
 	
 	with(parCandle)
 	{
