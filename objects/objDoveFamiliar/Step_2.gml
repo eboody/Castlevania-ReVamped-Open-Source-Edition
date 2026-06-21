@@ -114,4 +114,5 @@ if AI = RETURN
 		}
 	}
 }
-
+// Keep the familiar out of letterbox/pillarbox bars in safe-area scenes.
+aspect_clamp_self_to_safe_area();
