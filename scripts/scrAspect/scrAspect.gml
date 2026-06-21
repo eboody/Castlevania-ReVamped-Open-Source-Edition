@@ -244,23 +244,3 @@ function aspect_draw_black_bars_gui()
 		draw_rectangle(0,_target_h - _bar_h,_target_w,_target_h,false);
 	}
 }
-
-function aspect_clamp_self_to_safe_area()
-{
-	if !aspect_is_safe_area_scene()
-		return;
-	
-	var _left = 0;
-	var _right = aspect_base_width();
-	var _top = 0;
-	var _bottom = aspect_base_height();
-	
-	if bbox_left < _left
-		x += _left - bbox_left;
-	if bbox_right > _right
-		x -= bbox_right - _right;
-	if bbox_top < _top
-		y += _top - bbox_top;
-	if bbox_bottom > _bottom
-		y -= bbox_bottom - _bottom;
-}
