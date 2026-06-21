@@ -11,7 +11,7 @@ draw_set_halign(fa_center)
 draw_set_font(fntMessage)
 
 draw_text_outline( xview + (wview/2),yview + 8,c_black,nes_yellow,"Castlevania Warp System\n" + "Gold: $" + string(global.gold) + "\n" + "Warp Price: $" + string(warp_cost) )
-draw_text_outline(xview + 200,yview + 180,c_black,c_white,"< " + selected_string + " >")
+draw_text_outline(xview + (wview/2),yview + 180,c_black,c_white,"< " + selected_string + " >")
 
 
 draw_set_halign(fa_left)

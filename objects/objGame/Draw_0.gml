@@ -50,6 +50,6 @@ if global.boss_rush
 	
 	draw_set_halign(fa_center)
 	draw_set_font(fntMessage)
-	draw_text_outline(xview + 200,yview + 16,nes_blue,c_white,timetext)
+	draw_text_outline(xview + (wview/2),yview + 16,nes_blue,c_white,timetext)
 	draw_set_halign(fa_left)
 }

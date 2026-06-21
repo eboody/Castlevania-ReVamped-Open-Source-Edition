@@ -10,7 +10,7 @@ draw_sprite_tiled(sprSpriteShutters,4,xview,yview)
 
 draw_set_halign(fa_center)
 draw_set_color(c_white)
-draw_text_outline( xview + 200,yview + 200,c_black,c_white,"Press a direction to choose a whip\n or press " + input_verb_get_icon("swap") + " to cancel selection. " )
+draw_text_outline( xview + (wview/2),yview + 200,c_black,c_white,"Press a direction to choose a whip\n or press " + input_verb_get_icon("swap") + " to cancel selection. " )
 
 //draw arrows
 draw_sprite( sprite_index,image_index,xview+(wview/2),yview+(hview/2) )
