@@ -10,7 +10,7 @@ if mummy_order = 0
 		global.boss_music = false
 
 
-	if !active && abs(parPlayer.x - x) < eyesight
+	if !active && abs(parPlayer.x - x) < eyesight && boss_entry_gate_passed(x)
 	{
 		active = true
 		alarm[0] = 120
