@@ -18,7 +18,7 @@ scrControls()
 
 if kPause
 {
-	global.screen_sprite = sprite_create_from_surface(application_surface, 0, 0, 498, 224, false, false, 0, 0);
+	global.screen_sprite = aspect_screen_sprite_from_surface();
 	bitsound(sndMenuPause)
 	if !global.boss_rush 
 		instance_create(x,y,objPauseMenu)

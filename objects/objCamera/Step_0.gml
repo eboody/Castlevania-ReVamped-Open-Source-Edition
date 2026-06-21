@@ -1,22 +1,13 @@
 /// @description follow the player
-if room_width <= 400 || instance_exists(objIntroSimon)
+if aspect_is_safe_area_scene()
 {
 	camera_set_view_target(view_camera,noone)
-	var _camera_y = 0
-	if player_exists()
-	{
-		_camera_y = parPlayer.y - 112
-		if _camera_y < 0
-			_camera_y = 0
-		if _camera_y > room_height - 224
-			_camera_y = room_height - 224
-		if room_height <= 224
-			_camera_y = 0
-	}
-	camera_set_view_pos(view_camera,-49,_camera_y)
+	camera_set_view_pos(view_camera,aspect_safe_area_camera_x(),aspect_safe_area_camera_y())
 }
 else
-	camera_set_view_target(view_camera,parPlayer)
+{
+	aspect_apply_camera()
+}
 if player_exists()
 {
 	if instance_number(objFadeInShutter) > 0//parPlayer.hazard_damage

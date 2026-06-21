@@ -14,8 +14,8 @@ if kDownTap
 {
 	bitsound(sndWeaponWhip)
 	selection += 1
-	if selection >= 10
-		selection = 10
+	if selection >= 11
+		selection = 11
 }
 
 //set options
@@ -42,18 +42,26 @@ if kRightTap
 			global.vibration = true
 			ds_map_replace(global.options,"vibration",global.vibration)
 		}
-	if selection = 7 //window scale
+	if selection = 7 //aspect ratio
+		{
+			var _aspect = aspect_get_index() + 1
+			if _aspect >= aspect_count()
+				_aspect = 0
+			aspect_set_index(_aspect)
+			aspect_window_set_size()
+		}
+	if selection = 8 //window scale
 		{
 			if ds_map_find_value(global.options,"windowscale") < 7
 				ds_map_replace(global.options,"windowscale",ds_map_find_value(global.options,"windowscale")+1)
-			window_set_size(498 * ds_map_find_value(global.options,"windowscale"), 224 * ds_map_find_value(global.options,"windowscale"));
+			aspect_window_set_size();
 		}
-	if selection = 8 //fullscreen
+	if selection = 9 //fullscreen
 		{
 			ds_map_replace(global.options,"fullscreen",true)
 			window_set_fullscreen(ds_map_find_value(global.options,"fullscreen"))
 		}
-	if selection = 9 //crt
+	if selection = 10 //crt
 		{
 			ds_map_replace(global.options,"crt",true)
 			global.crt = true
@@ -83,18 +91,26 @@ if kLeftTap
 			global.vibration = false
 			ds_map_replace(global.options,"vibration",global.vibration)
 		}
-	if selection = 7 //window scale
+	if selection = 7 //aspect ratio
+		{
+			var _aspect = aspect_get_index() - 1
+			if _aspect < 0
+				_aspect = aspect_count() - 1
+			aspect_set_index(_aspect)
+			aspect_window_set_size()
+		}
+	if selection = 8 //window scale
 		{
 			if ds_map_find_value(global.options,"windowscale") > 1
 				ds_map_replace(global.options,"windowscale",ds_map_find_value(global.options,"windowscale")-1)
-			window_set_size(498 * ds_map_find_value(global.options,"windowscale"), 224 * ds_map_find_value(global.options,"windowscale"));
+			aspect_window_set_size();
 		}
-	if selection = 8 //fullscreen
+	if selection = 9 //fullscreen
 		{
 			ds_map_replace(global.options,"fullscreen",false)
 			window_set_fullscreen(ds_map_find_value(global.options,"fullscreen"))
 		}
-	if selection = 9 //crt
+	if selection = 10 //crt
 		{
 			ds_map_replace(global.options,"crt",false)
 			global.crt = false
@@ -119,17 +135,19 @@ if kAccept //control customizing, default values, credits, or leave
 		global.volumeSFX = 1
 		global.volumeBGM = 1
 		global.vibration = true	
+		aspect_set_index(aspect_default_index())
 		audio_stop_all()
 		ds_map_replace(global.options,"volumeSFX",global.volumeSFX)
 		ds_map_replace(global.options,"volumeBGM",global.volumeBGM)
 		ds_map_replace(global.options,"vibration",global.vibration)
+		ds_map_replace(global.options,"video_aspect",aspect_get_index())
 	}
 	if selection = 6 //credits
 	{
 		ds_map_secure_save(global.options,"Castlevania_Options.sav")
 		room_goto(rmCreditsOptions)
 	}
-	if selection = 10 //exit
+	if selection = 11 //exit
 	{
 		ds_map_secure_save(global.options,"Castlevania_Options.sav")
 		room_goto(rmFileSelect)

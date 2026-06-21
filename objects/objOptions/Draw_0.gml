@@ -18,7 +18,11 @@ if ds_map_find_value(global.options,"windowscale") = undefined
 		ds_map_replace(global.options,"windowscale",1)
 if ds_map_find_value(global.options,"fullscreen") = undefined
 		ds_map_replace(global.options,"fullscreen",false)
+if ds_map_find_value(global.options,"video_aspect") = undefined
+		ds_map_replace(global.options,"video_aspect",aspect_default_index())
+aspect_option_init()
 		
+aspecttext = "Aspect Ratio - " + aspect_get_label()
 windowtext = "Window Scale - " + string(ds_map_find_value(global.options,"windowscale"))
 fullscreentext = "Fullscreen - [Off]   On "
 if ds_map_find_value(global.options,"fullscreen") = true
@@ -44,10 +48,11 @@ draw_text(x,y + 48,"Game Input Settings")
 draw_text(x,y + 64,"Menu Input Settings")
 draw_text(x,y + 80,"Restore Defaults")
 draw_text(x,y + 96,"Credits")
-draw_text(x,y + 112,windowtext)
-draw_text(x,y + 128,fullscreentext)
-draw_text(x,y + 144,crttext)
-draw_text(x,y + 160,"Back")
+draw_text(x,y + 112,aspecttext)
+draw_text(x,y + 128,windowtext)
+draw_text(x,y + 144,fullscreentext)
+draw_text(x,y + 160,crttext)
+draw_text(x,y + 176,"Back")
 
 draw_set_color(nes_yellow)
 
@@ -66,10 +71,12 @@ if selection = 5
 if selection = 6
 	draw_text(x,y + 96,"Credits")
 if selection = 7
-	draw_text(x,y + 112,windowtext)
+	draw_text(x,y + 112,aspecttext)
 if selection = 8
-	draw_text(x,y + 128,fullscreentext)
+	draw_text(x,y + 128,windowtext)
 if selection = 9
-	draw_text(x,y + 144,crttext)
+	draw_text(x,y + 144,fullscreentext)
 if selection = 10
-	draw_text(x,y + 160,"Back")
+	draw_text(x,y + 160,crttext)
+if selection = 11
+	draw_text(x,y + 176,"Back")

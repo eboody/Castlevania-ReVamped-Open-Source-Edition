@@ -8,6 +8,7 @@ if (!file_exists("Castlevania_Options.sav"))
 	global.volumeBGM = 1
 	global.vibration = true
 	global.crt = false
+	ds_map_replace(global.options,"video_aspect",aspect_default_index())
 	
 	if ds_map_find_value( global.options,"icon files 0" ) = undefined
 		ds_map_replace( global.options,"icon file 0",0 )
@@ -32,10 +33,17 @@ else
 		ds_map_replace(global.options,"windowscale",1)
 	if ds_map_find_value(global.options,"fullscreen") = undefined
 		ds_map_replace(global.options,"fullscreen",false)
+	if ds_map_find_value(global.options,"video_aspect") = undefined
+		ds_map_replace(global.options,"video_aspect",aspect_default_index())
+	aspect_option_init()
 		
 	window_set_fullscreen(ds_map_find_value(global.options,"fullscreen"))
-	window_set_size(498 * ds_map_find_value(global.options,"windowscale"), 224 * ds_map_find_value(global.options,"windowscale"));
+	aspect_window_set_size();
 }
+
+aspect_option_init()
+aspect_apply_surface()
+aspect_window_set_size()
 
 //load controls if they exist
 if ds_map_find_value(global.options,"controls") != undefined
