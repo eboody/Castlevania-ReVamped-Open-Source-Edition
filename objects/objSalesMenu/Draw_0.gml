@@ -23,8 +23,8 @@ if list_string != 0
 	draw_text_outline(xview + 32 + (wview/2) - 16,yview + 24,c_black,nes_yellow,list_status)
 	draw_set_halign(fa_left)
 	draw_set_color(c_white)
-	draw_text_ext(xview + 400 - 160 + 24,yview + 96,description_string,9,160 - 24)
+	draw_text_ext(xview + wview - 160 + 24,yview + 96,description_string,9,160 - 24)
 	
 	if selection > 0
-		draw_sprite(sprCards,selection - 1,xview + 400 - 96,yview + 24)
+		draw_sprite(sprCards,selection - 1,xview + wview - 96,yview + 24)
 }

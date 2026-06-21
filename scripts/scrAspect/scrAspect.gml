@@ -216,3 +216,31 @@ function aspect_draw_black_bars()
 	if _view_b > aspect_base_height()
 		draw_rectangle(_view_x,aspect_base_height(),_view_r,_view_b,false);
 }
+
+function aspect_draw_black_bars_gui()
+{
+	if !aspect_is_safe_area_scene()
+		return;
+	
+	var _target_w = aspect_get_width();
+	var _target_h = aspect_get_height();
+	var _base_w = aspect_base_width();
+	var _base_h = aspect_base_height();
+	
+	draw_set_alpha(1);
+	draw_set_colour(c_black);
+	
+	if _target_w > _base_w
+	{
+		var _bar_w = (_target_w - _base_w) / 2;
+		draw_rectangle(0,0,_bar_w,_target_h,false);
+		draw_rectangle(_target_w - _bar_w,0,_target_w,_target_h,false);
+	}
+	else if _target_w < _base_w
+	{
+		var _view_h = round(_base_w * _target_h / _target_w);
+		var _bar_h = ((_view_h - _base_h) / 2) * (_target_h / _view_h);
+		draw_rectangle(0,0,_target_w,_bar_h,false);
+		draw_rectangle(0,_target_h - _bar_h,_target_w,_target_h,false);
+	}
+}
