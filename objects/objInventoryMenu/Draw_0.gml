@@ -12,12 +12,12 @@ nes_colors()
 
 draw_set_halign(fa_center)
 
-draw_text_outline(xview+200,yview+8,c_white,nes_yellow,"INVENTORY")
+draw_text_outline(xview+(wview/2),yview+8,c_white,nes_yellow,"INVENTORY")
 
-draw_text_outline(xview + 200,yview+224 - 10,c_black,nes_red,completion_string)
+draw_text_outline(xview + (wview/2),yview+224 - 10,c_black,nes_red,completion_string)
 
 draw_set_color(nes_yellow)
-draw_text_scribble_ext(xview+200,yview+160,description_string,320)
+draw_text_scribble_ext(xview+(wview/2),yview+160,description_string,320)
 
 draw_set_halign(fa_left)
 
