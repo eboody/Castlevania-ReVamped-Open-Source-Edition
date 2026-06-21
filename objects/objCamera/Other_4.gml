@@ -1,6 +1,6 @@
 /// @description set view, snap to player
 camera_set_view_size(view_camera,498,224)
-if room_width <= 400
+if room_width <= 400 || instance_exists(objIntroSimon)
 {
 	camera_set_view_target(view_camera,noone)
 	camera_set_view_pos(view_camera,-49,0)
