@@ -1,4 +1,5 @@
 /// @description file independent variables + BGM loop points
+depth = -16000000
 global.options = ds_map_create()
 
 //load options
