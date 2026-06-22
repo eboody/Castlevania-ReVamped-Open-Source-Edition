@@ -1,1 +1,1 @@
-door(16,176,bosDracula)
+door(48,176,bosDracula)

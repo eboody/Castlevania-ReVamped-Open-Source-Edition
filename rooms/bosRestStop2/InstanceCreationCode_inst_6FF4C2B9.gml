@@ -1,1 +1,1 @@
-door(16,192,bosMummies)
+door(48,192,bosMummies)

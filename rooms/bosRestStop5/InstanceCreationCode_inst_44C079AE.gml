@@ -1,1 +1,1 @@
-door(16,192,bosGranfalloon)
+door(48,192,bosGranfalloon)
