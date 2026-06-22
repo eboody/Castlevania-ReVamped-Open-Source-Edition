@@ -1,1 +1,1 @@
-door(384,176,toyReflectionChamber)
+door(352,176,toyReflectionChamber)

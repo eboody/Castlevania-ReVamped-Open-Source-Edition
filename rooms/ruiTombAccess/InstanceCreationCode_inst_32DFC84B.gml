@@ -1,1 +1,1 @@
-door(16,192,ruiTomb)
+door(48,192,ruiTomb)

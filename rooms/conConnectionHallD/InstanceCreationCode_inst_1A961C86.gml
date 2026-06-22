@@ -1,1 +1,1 @@
-door(16,176,torCursedAltar)
+door(48,176,torCursedAltar)
