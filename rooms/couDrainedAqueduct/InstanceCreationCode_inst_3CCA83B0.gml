@@ -1,1 +1,1 @@
-door(16,192,couCreaturesQuarters)
+door(48,192,couCreaturesQuarters)

@@ -1,1 +1,1 @@
-door(16,128,entDiningRoom)
+door(48,128,entDiningRoom)

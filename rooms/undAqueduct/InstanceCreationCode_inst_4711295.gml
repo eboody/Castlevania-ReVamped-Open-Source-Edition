@@ -1,1 +1,1 @@
-door(384,176,undEnchantmentCavern)
+door(352,176,undEnchantmentCavern)

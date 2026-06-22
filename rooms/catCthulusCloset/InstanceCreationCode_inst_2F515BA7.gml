@@ -1,1 +1,1 @@
-door(384,144,catCthuluChamber)
+door(352,144,catCthuluChamber)
