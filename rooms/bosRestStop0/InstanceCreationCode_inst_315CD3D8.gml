@@ -1,1 +1,1 @@
-door(16,176,bosMedusa)
+door(48,176,bosMedusa)

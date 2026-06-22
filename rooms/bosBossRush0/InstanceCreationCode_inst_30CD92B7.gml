@@ -1,1 +1,1 @@
-door(16,128,bosPhantomBat)
+door(48,128,bosPhantomBat)

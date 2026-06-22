@@ -1,1 +1,1 @@
-door(16,176,bosMirrorMonster)
+door(48,176,bosMirrorMonster)

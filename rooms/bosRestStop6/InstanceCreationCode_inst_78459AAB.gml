@@ -1,1 +1,1 @@
-door(16,112,bosCthulhu)
+door(48,112,bosCthulhu)

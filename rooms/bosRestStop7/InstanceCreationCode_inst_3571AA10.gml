@@ -1,1 +1,1 @@
-door(16,192,bosGrim)
+door(48,192,bosGrim)

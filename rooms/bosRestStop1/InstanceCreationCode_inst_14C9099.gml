@@ -1,1 +1,1 @@
-door(16,176,bosGolem)
+door(48,176,bosGolem)
