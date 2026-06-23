@@ -464,6 +464,14 @@ else
 	
 if sliding
 	mask_index = sprMaskSimonSlide
+
+// Clear movement afterimages as soon as Simon returns to a non-trail-producing state.
+// This runs after slide/dash/pound state updates so trails cannot linger over the standing sprite.
+if !(pounding or dashing or sliding)
+{
+	trail_counter = 0
+	with (objPlayerTrail) instance_destroy()
+}
 	
 #endregion
 
